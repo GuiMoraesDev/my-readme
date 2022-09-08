@@ -1,0 +1,40 @@
+{
+  "name": "my-pretty-readme",
+  "version": "0.0.1",
+  "description": "Create pretty readme to your project",
+  "main": "lib/es5/index.js",
+  "module": "lib/es6/index.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuiMoraesDev/my-readme.git"
+  },
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "my-pretty-readme",
+    "my-readme",
+    "readme",
+    "readme.md",
+    "doc",
+    "docs",
+    "documentation",
+    "javascript",
+    "typescript",
+    "web",
+    "web-developement",
+    "utils",
+    "utilities"
+  ],
+  "author": "Guilherme Moraes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GuiMoraesDev/my-readme/issues"
+  },
+  "homepage": "https://github.com/GuiMoraesDev/my-readme/readme"
+}
