@@ -8,7 +8,19 @@ interface ProjectLibsProps {
   [key: string]: string;
 }
 
-export const generate = () => {
+export interface Props {
+  project_name?: string;
+  project_cover_src?: string;
+  project_cover_alt?: string;
+  project_description?: string;
+}
+
+export const generate = ({
+  project_name,
+  project_cover_src,
+  project_cover_alt,
+  project_description,
+}: Props) => {
   const packageData = require(path.resolve("./package.json"));
 
   const projectLibs: ProjectLibsProps = {
@@ -21,13 +33,11 @@ export const generate = () => {
   );
 
   const content = buildContent({
-    project_name: packageData.name,
-    project_cover_src:
-      "https://raw.githubusercontent.com/GuiMoraesDev/my-readme/main/public/img/cover.png",
-    project_cover_alt:
-      "A book cover with the title 'my-pretty-readme', a quote saying 'this saves me much time. — the author' and my name bellow",
+    project_name,
+    project_cover_src,
+    project_cover_alt,
     project_libraries: libs,
-    project_description: packageData.description,
+    project_description,
   });
 
   return createReadmeFile({

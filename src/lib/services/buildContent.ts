@@ -22,7 +22,7 @@ const buildContent = ({
 
   const rawContent: string[] = [
     `# ${capitalizedName}`,
-    `<img src="${project_cover_src}" alt="${project_cover_alt}" height="100px" align="right" />`,
+    project_cover_src ? `<img src="${project_cover_src}" alt="${project_cover_alt}" height="100px" align="right" />` : undefined,
     project_libraries.join(",").replace(/,/g, "\n"),
     `<small>Some badges are links to the library doc</small>`,
     `## Description of that project 📖`,
