@@ -1,22 +1,27 @@
-import fs from "fs";
 import path from "path";
-import capitalizeFirstLetter from "./helpers/capitalizeFirstLetter";
-import replaceDashBySpace from "./helpers/replaceDashBySpace";
-import createReadmeContent from "./services/createReadmeContent";
+
+import buildContent from "./services/buildContent";
+import buildLibraryBadge from "./services/buildLibraryBadge";
+import createReadmeFile from "./services/createReadmeFile";
+
+interface ProjectLibsProps {
+  [key: string]: string;
+}
 
 export const generate = () => {
   const packageData = require(path.resolve("./package.json"));
 
-  const replaceDash = replaceDashBySpace(
-    packageData.name || "My package title"
+  const projectLibs: ProjectLibsProps = {
+    ...packageData.devDependencies,
+    ...packageData.dependencies,
+  };
+
+  const libs = Object.entries(projectLibs).map(([lib, version]) =>
+    buildLibraryBadge(lib, version)
   );
 
-  const capitalizedName = capitalizeFirstLetter(replaceDash);
-
-  const libs = { ...packageData.devDependencies, ...packageData.dependencies };
-
-  const content = createReadmeContent({
-    project_name: capitalizedName,
+  const content = buildContent({
+    project_name: packageData.name,
     project_cover_src:
       "https://raw.githubusercontent.com/GuiMoraesDev/my-readme/main/public/img/cover.png",
     project_cover_alt:
@@ -25,8 +30,7 @@ export const generate = () => {
     project_description: packageData.description,
   });
 
-  fs.writeFile("README.md", content, (err) => {
-    if (err) throw err;
-    console.log("The file has been saved!");
+  return createReadmeFile({
+    content,
   });
 };

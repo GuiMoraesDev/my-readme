@@ -6,7 +6,7 @@
   "description": "Create pretty readme to your project",
   "scripts": {
     "compile": "rm -fr dist/lib && tsc && tsc --build tsconfig.es5.json",
-    "publish": "publish --access=public"
+    "run-try": "node dist/lib/es5"
   },
   "devDependencies": {
     "@types/node": "^18.7.16",
