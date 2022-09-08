@@ -1,6 +1,6 @@
 {
   "name": "my-pretty-readme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create pretty readme to your project",
   "main": "lib/es5/index.js",
   "module": "lib/es6/index.js",
