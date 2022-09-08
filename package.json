@@ -1,0 +1,9 @@
+{
+  "name": "my-readme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.8.2"
+  }
+}
