@@ -57,5 +57,5 @@ const { argv } = process;
     response = await prompts(questions);
   }
 
-  generate(response);
+  return generate(response);
 })();

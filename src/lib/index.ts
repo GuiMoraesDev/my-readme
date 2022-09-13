@@ -1,8 +1,10 @@
+import fs from "fs";
 import path from "path";
 
 import buildContent from "./services/buildContent";
 import buildLibraryBadge from "./services/buildLibraryBadge";
 import createReadmeFile from "./services/createReadmeFile";
+import getDirectories from "./services/getDirectories";
 
 interface ProjectLibsProps {
   [key: string]: string;
@@ -15,12 +17,16 @@ export interface Props {
   project_description?: string;
 }
 
-export const generate = ({
+export const generate = async ({
   project_name,
   project_cover_src,
   project_cover_alt,
   project_description,
 }: Props) => {
+  const directories = await getDirectories("./src");
+
+  console.log('directories', directories);
+
   const packageData = require(path.resolve("./package.json"));
 
   const projectLibs: ProjectLibsProps = {

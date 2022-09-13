@@ -27,7 +27,7 @@ const buildContent = ({
     `<small>Some badges are links to the library doc</small>`,
     `## Description of that project 📖`,
     project_description,
-  ];
+  ].filter(Boolean);
 
   const parsedContent = rawContent.join("&&&").replace(/&&&/g, "\n\n");
   const finalContent = `${parsedContent}\n`;
